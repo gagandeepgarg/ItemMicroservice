@@ -8,9 +8,10 @@ namespace ItemsDAL.Entity
     public class Item
     {
         public int Id { get; set; }
+        public int ItemName { get; set; }
         public int CategoryId { get; set; }
         public long PricePerUnit { get; set; }
-        public int MeasurementUnitName { get; set; }
+        public int MeasurementUnit { get; set; }
         public DateTime CreatedOn { get; set; }
         public int CreatedBy { get; set; }
         public DateTime? UpdatedOn { get; set; }

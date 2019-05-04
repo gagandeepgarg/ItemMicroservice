@@ -34,21 +34,21 @@ namespace ItemsMicroservice.Controllers
 
         // POST api/values
         [HttpPost]
-        public async void Post([FromBody] Item ItemVal)
+        public async Task Post([FromBody] Item ItemVal)
         {
             await _itemsManager.SaveItem(ItemVal);
         }
 
         // PUT api/values/5
-        [HttpPut("{id}")]
-        public async void Put(int id, [FromBody] Item ItemVal)
+        [HttpPut]
+        public async Task Put([FromBody] Item ItemVal)
         {
-            await _itemsManager.UpdateItem(id, ItemVal);
+            await _itemsManager.UpdateItem(ItemVal);
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public async void Delete(int id)
+        public async Task Delete(int id)
         {
             await _itemsManager.DeleteItem(id);
         }

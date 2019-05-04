@@ -1,6 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿
 using System;
 using ItemsDAL.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace ItemsDAL.DBContexts
 {
@@ -11,7 +12,7 @@ namespace ItemsDAL.DBContexts
         {
         }
 
-        public DbSet<Item> Items { get; set; }
+        public DbSet<Item> Item { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -26,7 +27,7 @@ namespace ItemsDAL.DBContexts
                     Id = 1,
                     CategoryId=1,
                     PricePerUnit=100,
-                    MeasurementUnitName= (int)MeasurementUnit.feet,
+                    MeasurementUnit= (int)MeasurementUnit.feet,
                     CreatedOn = DateTime.Now,
                     CreatedBy = 1,
                     UpdatedOn = null,

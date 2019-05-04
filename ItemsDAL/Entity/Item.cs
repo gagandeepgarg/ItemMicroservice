@@ -8,7 +8,7 @@ namespace ItemsDAL.Entity
     public class Item
     {
         public int Id { get; set; }
-        public int ItemName { get; set; }
+        public string ItemName { get; set; }
         public int CategoryId { get; set; }
         public long PricePerUnit { get; set; }
         public int MeasurementUnit { get; set; }

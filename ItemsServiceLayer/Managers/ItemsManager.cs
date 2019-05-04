@@ -20,12 +20,12 @@ namespace ItemsMicroservice.Repository.Managers
 
         public async Task<List<Item>> GetAllItems()
         {
-            return await _dbContext.Items.ToListAsync();
+                return await _dbContext.Item.ToListAsync();   
         }
 
         public async Task<Item> GetItemById(int id)
         {
-            return await _dbContext.Items.Where(o => o.Id == id).FirstOrDefaultAsync();
+            return await _dbContext.Item.Where(o => o.Id == id).FirstOrDefaultAsync();
         }
 
         public async Task SaveItem(Item ItemVal)
@@ -34,7 +34,7 @@ namespace ItemsMicroservice.Repository.Managers
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task UpdateItem(int id, Item ItemVal)
+        public async Task UpdateItem(Item ItemVal)
         {
             _dbContext.Update(ItemVal);
             await _dbContext.SaveChangesAsync();
@@ -42,7 +42,7 @@ namespace ItemsMicroservice.Repository.Managers
         public async Task DeleteItem(int id)
         {
             var Item = await GetItemById(id);
-            _dbContext.Items.Remove(Item);
+            _dbContext.Item.Remove(Item);
         }
     }
 }

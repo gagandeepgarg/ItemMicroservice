@@ -13,6 +13,11 @@ using Microsoft.Extensions.Options;
 using System.IO;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using ItemsDAL.DBContexts;
+// using ItemsServiceLayer.Interfaces;
+using ItemsMicroservice.Repository.Interfaces;
+using ItemsMicroservice.Repository.Managers;
+
 namespace ItemMicroservice
 {
     public class Startup
@@ -37,7 +42,7 @@ namespace ItemMicroservice
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "OrderServiceApi" });
 
             });
-            //services.AddDbContext<OrderContext>(o => o.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString")))
+            services.AddDbContext<ItemContext>(o => o.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString")));
             services.AddCors();
             ConfigureDependencies(services);
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
@@ -69,7 +74,7 @@ namespace ItemMicroservice
         public void ConfigureDependencies(IServiceCollection services)
         {
             //Service and data access dependencies  
-            //services.AddScoped<IOrderManager, OrderManager>();
+            services.AddScoped<IItemsManager, ItemsManager>();
 
         }
 
